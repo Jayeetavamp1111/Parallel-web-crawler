@@ -2,6 +2,7 @@ package com.udacity.webcrawler.json;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -34,6 +35,7 @@ public final class CrawlResultWriter {
 
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.disable(JsonGenerator.Feature.AUTO_CLOSE_TARGET);
+    objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
     try {
       objectMapper.writeValue(writer, result);
